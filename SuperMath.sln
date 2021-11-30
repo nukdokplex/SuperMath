@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31727.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMath", "SuperMath\SuperMath.csproj", "{97F4FC4E-39F8-43ED-A011-3BC7531595AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDP.MathUtils", "NDP.MathUtils\NDP.MathUtils.csproj", "{F4E3F515-7BC8-4048-BCF1-7C64DCCF2C64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97F4FC4E-39F8-43ED-A011-3BC7531595AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F4FC4E-39F8-43ED-A011-3BC7531595AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F4FC4E-39F8-43ED-A011-3BC7531595AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F4FC4E-39F8-43ED-A011-3BC7531595AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E3F515-7BC8-4048-BCF1-7C64DCCF2C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E3F515-7BC8-4048-BCF1-7C64DCCF2C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E3F515-7BC8-4048-BCF1-7C64DCCF2C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E3F515-7BC8-4048-BCF1-7C64DCCF2C64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11AF5CE0-7E88-4AE7-9678-0BC168B732CF}
+	EndGlobalSection
+EndGlobal
