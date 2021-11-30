@@ -48,9 +48,9 @@ namespace NDP.MathUtils.Utils
 
         public int IntegerOrDefault() => this.Match(f => f, s => default(int), t => default(int));
 
-        public CommonFraction FractionOrDefault() => this.Match(f => default(CommonFraction), s => s, t => default(CommonFraction));
+        public CommonFraction FractionOrDefault() => this.Match(i => new CommonFraction(i, 1), f => f, r => default(CommonFraction));
 
-        public float RealOrDefault() => this.Match(f => default(float), s => default(float), t => t);
+        public float Real() => this.Match(i => i, f => f.GetRealValue(), r => r);
 
         public static implicit operator EitherNumber(int integer) => new EitherNumber(integer);
 
@@ -218,6 +218,36 @@ namespace NDP.MathUtils.Utils
                 case 1: return new EitherNumber((int)result);
                 case 2: return new EitherNumber((CommonFraction)result);
                 case 3: return new EitherNumber((float)result);
+                default: throw new InvalidOperationException();
+            }            
+        }
+
+        public static EitherNumber operator -(EitherNumber a)
+        {
+            byte type = 0;
+
+            object result = a.Match<object>(
+                i => { type = 1; return -i; },
+                f => { type = 2; return -f; },
+                r => { type = 3; return -r; }
+            );
+
+            switch (type)
+            {
+                case 1: return new EitherNumber((int)result);
+                case 2: return new EitherNumber((CommonFraction)result);
+                case 3: return new EitherNumber((float)result);
+                default: throw new InvalidOperationException();
+            }
+        }
+
+        public EitherNumber Clone()
+        {
+            switch (which)
+            {
+                case 1: return new EitherNumber(integer);
+                case 2: return new EitherNumber(fraction.Clone());
+                case 3: return new EitherNumber(real);
                 default: throw new InvalidOperationException();
             }
         }

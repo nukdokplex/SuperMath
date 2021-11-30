@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMath", "SuperMath\Supe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDP.MathUtils", "NDP.MathUtils\NDP.MathUtils.csproj", "{F4E3F515-7BC8-4048-BCF1-7C64DCCF2C64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDP.MathUtils.Tests", "NDP.MathUtils.Tests\NDP.MathUtils.Tests.csproj", "{83B6D124-608D-4CB0-B9FE-B2774E17DD45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F4E3F515-7BC8-4048-BCF1-7C64DCCF2C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4E3F515-7BC8-4048-BCF1-7C64DCCF2C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4E3F515-7BC8-4048-BCF1-7C64DCCF2C64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83B6D124-608D-4CB0-B9FE-B2774E17DD45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B6D124-608D-4CB0-B9FE-B2774E17DD45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B6D124-608D-4CB0-B9FE-B2774E17DD45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B6D124-608D-4CB0-B9FE-B2774E17DD45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -28,14 +28,19 @@ namespace SuperMath
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            CommonFraction f1 = new CommonFraction(116, 71);
+            /*CommonFraction f1 = new CommonFraction(116, 71);
             f1.Minimize();
             MessageBox.Show($"{f1.Numerator}/{f1.Denominator}");
             MessageBox.Show($"{f1.GetRealValue()}");
             CommonFraction f2 = new CommonFraction(4, 3);
             CommonFraction f3 = f1 + f2;
             f3.Minimize();
-            MessageBox.Show($"{f3.Numerator}/{f3.Denominator}");
+            MessageBox.Show($"{f3.Numerator}/{f3.Denominator}");*/
+
+            NDP.MathUtils.Matrix matrix = new NDP.MathUtils.Matrix(4, 4);
+            
+
+            MessageBox.Show(matrix.Determinator().Real().ToString());
         }
     }
 }

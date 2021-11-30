@@ -163,9 +163,14 @@
             return fraction / b;
         }
 
+        
+
         public override string ToString()
         {
             return $"({Numerator}/{Denominator})";
         }
+
+        public CommonFraction Clone() => new CommonFraction(Numerator, Denominator);
+        
     }
 }
