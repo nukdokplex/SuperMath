@@ -50,7 +50,7 @@ namespace NDP.MathUtils.Utils
 
         public CommonFraction FractionOrDefault() => this.Match(i => new CommonFraction(i, 1), f => f, r => default(CommonFraction));
 
-        public float Real() => this.Match(i => i, f => f.GetRealValue(), r => r);
+        public float Real() => this.Match(i => i, f => f.RealValue, r => r);
 
         public static implicit operator EitherNumber(int integer) => new EitherNumber(integer);
 
@@ -76,7 +76,7 @@ namespace NDP.MathUtils.Utils
                     return b.Match<object>(
                         (int bi) => { type = 2; return ac + bi; },
                         (CommonFraction bc) => { type = 2; return ac + bc; },
-                        (float bf) => { type = 3; return ac.GetRealValue() + bf; }
+                        (float bf) => { type = 3; return ac.RealValue + bf; }
                     );
                 },
 
@@ -84,7 +84,7 @@ namespace NDP.MathUtils.Utils
                 {
                     return b.Match<object>(
                         (int bi) => { type = 3; return af + bi; },
-                        (CommonFraction bc) => { type = 3; return af + bc.GetRealValue(); },
+                        (CommonFraction bc) => { type = 3; return af + bc.RealValue; },
                         (float bf) => { type = 3; return af + bf; }
                     );
                 }
@@ -117,7 +117,7 @@ namespace NDP.MathUtils.Utils
                     return b.Match<object>(
                         (int bi)            => { type = 2; return ac - bi; },
                         (CommonFraction bc) => { type = 2; return ac - bc; },
-                        (float bf)          => { type = 3; return ac.GetRealValue() - bf; }
+                        (float bf)          => { type = 3; return ac.RealValue - bf; }
                     );
                 },
 
@@ -125,7 +125,7 @@ namespace NDP.MathUtils.Utils
                 {
                     return b.Match<object>(
                         (int bi)            => { type = 3; return af - bi; },
-                        (CommonFraction bc) => { type = 3; return af - bc.GetRealValue(); },
+                        (CommonFraction bc) => { type = 3; return af - bc.RealValue; },
                         (float bf)          => { type = 3; return af - bf; }
                     );
                 }
@@ -158,7 +158,7 @@ namespace NDP.MathUtils.Utils
                     return b.Match<object>(
                         (int bi) => { type = 2; return ac * bi; },
                         (CommonFraction bc) => { type = 2; return ac * bc; },
-                        (float bf) => { type = 3; return ac.GetRealValue() * bf; }
+                        (float bf) => { type = 3; return ac.RealValue * bf; }
                     );
                 },
 
@@ -166,7 +166,7 @@ namespace NDP.MathUtils.Utils
                 {
                     return b.Match<object>(
                         (int bi) => { type = 3; return af * bi; },
-                        (CommonFraction bc) => { type = 3; return af * bc.GetRealValue(); },
+                        (CommonFraction bc) => { type = 3; return af * bc.RealValue; },
                         (float bf) => { type = 3; return af * bf; }
                     );
                 }
@@ -199,7 +199,7 @@ namespace NDP.MathUtils.Utils
                     return b.Match<object>(
                         (int bi) => { type = 2; return ac / bi; },
                         (CommonFraction bc) => { type = 2; return ac / bc; },
-                        (float bf) => { type = 3; return ac.GetRealValue() / bf; }
+                        (float bf) => { type = 3; return ac.RealValue / bf; }
                     );
                 },
 
@@ -207,7 +207,7 @@ namespace NDP.MathUtils.Utils
                 {
                     return b.Match<object>(
                         (int bi) => { type = 3; return af / bi; },
-                        (CommonFraction bc) => { type = 3; return af / bc.GetRealValue(); },
+                        (CommonFraction bc) => { type = 3; return af / bc.RealValue; },
                         (float bf) => { type = 3; return af / bf; }
                     );
                 }

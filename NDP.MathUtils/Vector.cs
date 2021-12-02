@@ -74,6 +74,19 @@ namespace NDP.MathUtils
             return (float) Math.Sqrt(sum);
         }
 
+        public static Vector CrossProduct(Vector a, Vector b)
+        {
+            if (a.Dimension != 3 || b.Dimension != 3) throw new ArgumentOutOfRangeException("Both of vectors must be in third dimension.");
+            var m = new Matrix(new Vector(0, 0, 0), a, b);
+            return new Vector(m.Minor(0, 0).Determinator(), -m.Minor(0, 1).Determinator(), m.Minor(0,2).Determinator());
+        }
+
+        public static EitherNumber TripleProduct(Vector a, Vector b, Vector c)
+        {
+            if (a.Dimension != 3 || b.Dimension != 3 || c.Dimension != 3) throw new ArgumentOutOfRangeException("Each of three vectors must be in third dimenssion.");
+            return new Matrix(a, b, c).Determinator();
+        }
+
         public static EitherNumber operator *(Vector a, Vector b)
         {
             if (a.Dimension != b.Dimension) throw new InvalidOperationException("Vectors must be same dimension.");
@@ -85,7 +98,5 @@ namespace NDP.MathUtils
 
             return sum;
         }
-
-        
     }
 }

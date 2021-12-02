@@ -1,4 +1,6 @@
-﻿namespace NDP.MathUtils
+﻿using System;
+
+namespace NDP.MathUtils
 {
     public class CommonFraction
     {
@@ -11,18 +13,19 @@
             } 
         }
 
+        public float RealValue
+        {
+            get
+            {
+                return Numerator / Denominator;
+            }
+        }
+
         public CommonFraction(int numerator, int denominator)
         {
             Numerator = numerator;
             Denominator = denominator;
         }
-
-        public float GetRealValue()
-        {
-            return ((float)Numerator) / ((float)Denominator);
-        }
-
-        
 
         public bool IsNegative()
         {
@@ -44,7 +47,14 @@
             // This strategy is to collapse two negatiations or move it to numerator
         }
 
+        public CommonFraction Minimized()
+        {
+            CommonFraction r = this;
+            r.Minimize();
+            return r;
+        }
 
+        #region Operators
 
         public static CommonFraction operator +(CommonFraction a, CommonFraction b)
         {
@@ -165,12 +175,47 @@
 
         
 
+        public static bool operator !=(CommonFraction a, CommonFraction b) => !a.Equals(b);
+        public static bool operator ==(CommonFraction a, CommonFraction b) => a.Equals(b);
+
+        public static bool operator !=(CommonFraction a, float b) => a.RealValue != b;
+
+        public static bool operator ==(CommonFraction a, float b) => a.RealValue == b;
+
+        public static bool operator !=(float a, CommonFraction b) => b != a;
+
+        public static bool operator ==(float a, CommonFraction b) => b != a;
+
+        public static bool operator !=(CommonFraction a, int b) => !a.IsInteger || (a.Minimized().Numerator != b);
+
+        public static bool operator ==(CommonFraction a, int b) => a.IsInteger && (a.Minimized().Numerator == b);
+
+        public static bool operator !=(int a, CommonFraction b) => b != a;
+
+        public static bool operator ==(int a, CommonFraction b) => b == a;
+        #endregion
+
         public override string ToString()
         {
             return $"({Numerator}/{Denominator})";
         }
 
         public CommonFraction Clone() => new CommonFraction(Numerator, Denominator);
-        
+
+        public override bool Equals(object obj)
+        {
+            CommonFraction f = new CommonFraction(1,1);
+            try
+            {
+                f = (CommonFraction)obj;
+                f.Minimize();
+            }
+            catch
+            {
+                return false;
+            }
+            var t = this.Minimized();
+            return Math.Abs(t.Numerator) == Math.Abs(f.Numerator) && Math.Abs(t.Denominator) == Math.Abs(f.Denominator) && t.IsNegative() == f.IsNegative();
+        }
     }
 }

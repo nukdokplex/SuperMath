@@ -39,6 +39,38 @@ namespace NDP.MathUtils
             }
         }
 
+        public Matrix(int rows, int columns, params EitherNumber[][] elements)
+        {
+            Elements = new List<List<EitherNumber>>();
+            if (elements.GetLength(0) != rows) throw new ArgumentOutOfRangeException();
+            for (int i = 0; i < rows; i++)
+            {
+                if (elements[i].Length != columns) throw new ArgumentOutOfRangeException();
+                Elements.Add(new List<EitherNumber>());
+                for (int j = 0; j < columns; j++)
+                {
+                    Elements[i].Add(elements[i][j]);
+                }
+            }
+        }
+
+        public Matrix(params Vector[] rows)
+        {
+            Elements = new List<List<EitherNumber>>();
+
+            int columns = rows[0].Dimension;
+
+            for (int i = 0; i < rows.Length; i++)
+            {
+                if (rows[i].Dimension != columns) throw new ArgumentOutOfRangeException("All vectors must be same dimesion.");
+                Elements.Add(new List<EitherNumber>());
+                for (int j = 0; j < columns; j++)
+                {
+                    Elements[i].Add(rows[i][j]);
+                }
+            }
+        }
+
         public int GetRowCount()
         {
             return Elements.Count;
@@ -112,12 +144,6 @@ namespace NDP.MathUtils
             return Elements[row][column];
         }
 
-        #region Operators for Either3 Triade
-            
-        
-
-        #endregion
-
         public static Matrix operator +(Matrix a, Matrix b) 
         {
             if (a.GetRowCount() == b.GetRowCount() && a.GetColumnCount() == b.GetColumnCount())
@@ -185,7 +211,18 @@ namespace NDP.MathUtils
 
         public static Matrix operator *(EitherNumber n, Matrix a) => a * n;
 
-        
+        public static Matrix operator /(Matrix a, EitherNumber n)
+        {
+            for (int i = 0; i < a.GetRowCount(); i++)
+            {
+                for (int j = 0; j < a.GetColumnCount(); j++)
+                {
+                    a[i, j] /= n;
+                }
+            }
+
+            return a;
+        }
 
         public void DeleteRow(int row) => Elements.RemoveAt(row);
 
